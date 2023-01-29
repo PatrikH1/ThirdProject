@@ -21,7 +21,8 @@ test {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'HelloWorld.Class1'
+    // mainClassName = 'HelloWorld.Class1'
+    mainClassName = 'vinstSkatt.BeraknaVinstSkatt'
     // mainClassName = 'PingPong.AskNumberOfMatches'
     // mainClass.set("HelloWorld.Class1")
 }
