@@ -1,26 +1,38 @@
 package vinstSkatt;
 
-import java.util.Scanner;
-
 public class BeraknaVinstSkatt {
 
-    public static void main(String[] args) {
 
-        int kapitaltillskott = 0;
-        int inkopspris = 0;
 
-        Scanner scanner = new Scanner(System.in);
+    private int pris = 2150000;
 
-        System.out.print("Kapitaltillskott: ");
-        kapitaltillskott = scanner.nextInt();
+    private int kapitaltillskott = 255590;
+    private int inkopspris = 125000;
 
-        System.out.print("Inköpspris: ");
-        inkopspris = scanner.nextInt();
-
-        System.out.println("Kapitaltillskott: " + kapitaltillskott);
-        System.out.println("Inköpspris: " + inkopspris);
-
-        scanner.close();
+    public BeraknaVinstSkatt() {
     }
 
+    public int getPris() {
+        return pris;
+    }
+
+    public int getKapitaltillskott() {
+        return kapitaltillskott;
+    }
+
+    public int getInkopspris() {
+        return inkopspris;
+    }
+
+    public void setPris(int pris) {
+        this.pris = pris;
+    }
+
+    public void setKapitaltillskott(int kapitaltillskott) {
+        this.kapitaltillskott = kapitaltillskott;
+    }
+
+    public void setInkopspris(int inkopspris) {
+        this.inkopspris = inkopspris;
+    }
 }

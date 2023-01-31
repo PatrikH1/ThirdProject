@@ -20,11 +20,11 @@ test {
 }
 
 
-
+gradle
 application {
     // Define the main class for the application.
     // mainClassName = 'HelloWorld.Class1'
-    mainClassName = 'vinstSkatt.BeraknaVinstSkatt'
+    mainClassName = 'vinstSkatt.BeraknaVinstSkattMain'
     // mainClassName = 'guiFirstTest.NewJFrameTestMultiRandom'
     // mainClassName = 'PingPong.AskNumberOfMatches'
     // mainClass.set("HelloWorld.Class1")
