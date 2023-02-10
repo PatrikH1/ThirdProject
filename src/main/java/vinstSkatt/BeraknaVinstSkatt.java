@@ -103,5 +103,12 @@ public class BeraknaVinstSkatt {
                 - reparationsfond;
     }
 
+    /*
+      Vinstskatten är 22 %.
+     */
+    public double vinstSkatt() {
+        return 0.22 * vinstEfterAvdrag() ;
+    }
+
 
 }

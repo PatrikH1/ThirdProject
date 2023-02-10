@@ -1,5 +1,7 @@
 package vinstSkatt;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Scanner;
 
 public class BeraknaVinstSkattMain {
@@ -9,6 +11,8 @@ public class BeraknaVinstSkattMain {
         BeraknaVinstSkatt beraknaVinstSkatt = new BeraknaVinstSkatt();
 
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println();
 
         System.out.print("Kapitaltillskott (255 590): ");
         String line = scanner.nextLine();
@@ -58,7 +62,9 @@ public class BeraknaVinstSkattMain {
             beraknaVinstSkatt.setReparationsfond(Integer.valueOf(line));
         }
 
+        System.out.println();
         System.out.println("--------------------------------------------------------------------");
+        System.out.println("------- Inmatning av värden: ");
 
         System.out.println("Kapitaltillskott: " + beraknaVinstSkatt.getKapitaltillskott());
         System.out.println("Inköpspris: " + beraknaVinstSkatt.getInkopspris());
@@ -69,9 +75,23 @@ public class BeraknaVinstSkattMain {
         System.out.println("Överåtelseavgift: " + beraknaVinstSkatt.getOverlotelseAvgift());
         System.out.println("Reparationsfond: " + beraknaVinstSkatt.getReparationsfond());
 
+        // För att använda space mellan tusental.
+        DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();
+        symbols.setGroupingSeparator(' ');
+        DecimalFormat formatter = new DecimalFormat("###,###.##", symbols);
+
+        System.out.println();
         System.out.println("--------------------------------------------------------------------");
         System.out.println("------- Vinst efter avdrag, priset är " + beraknaVinstSkatt.getPris() + " :");
-        System.out.println(beraknaVinstSkatt.vinstEfterAvdrag());
+        System.out.println(formatter.format((beraknaVinstSkatt.vinstEfterAvdrag())));
+
+        System.out.println();
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("------- Vinstskatt, 22 % på vinsten efter avdrag: ");
+        System.out.println(formatter.format(beraknaVinstSkatt.vinstSkatt()));
+        System.out.println(formatter.format(beraknaVinstSkatt.vinstSkatt() / 2) + " (Halv vinstskatt)");
+
+        System.out.println();
 
         scanner.close();
     }
