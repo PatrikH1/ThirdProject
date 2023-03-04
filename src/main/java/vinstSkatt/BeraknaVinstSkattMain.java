@@ -64,7 +64,7 @@ public class BeraknaVinstSkattMain {
 
         System.out.println();
         System.out.println("--------------------------------------------------------------------");
-        System.out.println("------- Inmatning av värden: ");
+        System.out.println("------- Inmatning av alla värden: ");
 
         System.out.println("Kapitaltillskott: " + beraknaVinstSkatt.getKapitaltillskott());
         System.out.println("Inköpspris: " + beraknaVinstSkatt.getInkopspris());
