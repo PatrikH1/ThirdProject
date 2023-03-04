@@ -14,52 +14,46 @@ public class BeraknaVinstSkattMain {
 
         System.out.println();
 
-        System.out.print("Kapitaltillskott (255 590): ");
-        String line = scanner.nextLine();
-        if (line.matches("\\d+")) {
-            beraknaVinstSkatt.setKapitaltillskott(Integer.valueOf(line));
+        // Förstår ej varför, men behövs för att kunna skriva ut åäö.
+        String input = "Kapitaltillskott (255 590): ";
+        Integer value = inputInformation(input);
+        if (value != null) {
+            beraknaVinstSkatt.setKapitaltillskott(value);
         }
 
-        System.out.print("Inköpspris (125 000): ");
-        line = scanner.nextLine();
-        if (line.matches("\\d+")) {
-            beraknaVinstSkatt.setInkopspris(Integer.valueOf(line));
+        value = inputInformation("Inköpspris (125 000): ");
+        if (value != null) {
+            beraknaVinstSkatt.setInkopspris(value);
         }
 
-        System.out.print("Mäklararvode (40 000): ");
-        line = scanner.nextLine();
-        if (line.matches("\\d+")) {
-            beraknaVinstSkatt.setMaklararvode(Integer.valueOf(line));
+        value = inputInformation("Mäklararvode (40 000): ");
+        if (value != null) {
+            beraknaVinstSkatt.setMaklararvode(value);
         }
 
-        System.out.print("Balkonger (60 000): ");
-        line = scanner.nextLine();
-        if (line.matches("\\d+")) {
-            beraknaVinstSkatt.setBalkonger(Integer.valueOf(line));
+        value = inputInformation("Balkonger (60 000): ");
+        if (value != null) {
+            beraknaVinstSkatt.setBalkonger(value);
         }
 
-        System.out.print("Annons på Hemnet (2 990): ");
-        line = scanner.nextLine();
-        if (line.matches("\\d+")) {
-            beraknaVinstSkatt.setAnnonsPaHemnet(Integer.valueOf(line));
+        value = inputInformation("Annons på Hemnet (2 990): ");
+        if (value != null) {
+            beraknaVinstSkatt.setAnnonsPaHemnet(value);
         }
 
-        System.out.print("Inköp persienner (5 400): ");
-        line = scanner.nextLine();
-        if (line.matches("\\d+")) {
-            beraknaVinstSkatt.setInkopPersienner(Integer.valueOf(line));
+        value = inputInformation("Inköp persienner (5 400): ");
+        if (value != null) {
+            beraknaVinstSkatt.setInkopPersienner(value);
         }
 
-        System.out.print("Överelåtelseavgift (1 208): ");
-        line = scanner.nextLine();
-        if (line.matches("\\d+")) {
-            beraknaVinstSkatt.setOverlotelseAvgift(Integer.valueOf(line));
+        value = inputInformation("Överelåtelseavgift (1 208): ");
+        if (value != null) {
+            beraknaVinstSkatt.setOverlotelseAvgift(value);
         }
 
-        System.out.print("Reparationsfond (80): ");
-        line = scanner.nextLine();
-        if (line.matches("\\d+")) {
-            beraknaVinstSkatt.setReparationsfond(Integer.valueOf(line));
+        value = inputInformation("Reparationsfond (80): ");
+        if (value != null) {
+            beraknaVinstSkatt.setReparationsfond(value);
         }
 
         System.out.println();
@@ -94,6 +88,21 @@ public class BeraknaVinstSkattMain {
         System.out.println();
 
         scanner.close();
+    }
+
+    private static Integer inputInformation(String infoString) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(infoString);
+        if (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            if (line.matches("\\d+")) {
+                return Integer.valueOf(line);
+            }
+            else {
+                return null;
+            }
+        }
+        return null;
     }
 
 }

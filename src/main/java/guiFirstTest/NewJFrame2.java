@@ -110,7 +110,7 @@ public class NewJFrame2 extends javax.swing.JFrame {
 			{
 				jLabelYourName = new JLabel();
 				getContentPane().add(jLabelYourName);
-				jLabelYourName.setText("What´s your name?");
+				jLabelYourName.setText("What is your name?");
 				jLabelYourName.setBounds(53, 174, 128, 36);
 				jLabelYourName.setFont(new java.awt.Font("Segoe UI",1,14));
 			}
