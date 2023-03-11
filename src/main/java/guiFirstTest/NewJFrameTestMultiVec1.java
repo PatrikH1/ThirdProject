@@ -352,18 +352,16 @@ public class NewJFrameTestMultiVec1 extends javax.swing.JFrame {
 	private void printOKorError(JLabel jLabel, JTextField jTextField, int num1, int num2)
 	{
 		try
-		{		
-		   Integer tmpInteger = new Integer(jTextField.getText());
-		   if (tmpInteger == (num1 * num2))
-		   {
-			   jLabel.setForeground(new java.awt.Color(28,210,23));
-			   jLabel.setText("OK");
-		   }
-		   else
-		   {
-			   jLabel.setForeground(new java.awt.Color(255,0,0));
-			   jLabel.setText("Error");			
-		   }		
+		{
+			String input = jTextField.getText();
+			Integer tmpInteger = Integer.valueOf(input);
+			if (tmpInteger == (num1 * num2)) {
+				jLabel.setForeground(new java.awt.Color(28, 210, 23));
+				jLabel.setText("OK");
+			} else {
+				jLabel.setForeground(new java.awt.Color(255, 0, 0));
+				jLabel.setText("Error");
+			}
 		}
 		catch (NumberFormatException ex)
 		{

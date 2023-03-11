@@ -617,20 +617,16 @@ public class NewJFrameTestMultiVec extends javax.swing.JFrame {
 	private void printOKorError(JLabel jLabel, JTextField jTextField, int num1, int num2)
 	{
 		try
-		{		
-		   Integer tmpInteger = new Integer(jTextField.getText());
-		   if (tmpInteger == (num1 * num2))
-		   {
-			   jLabel.setText("OK");
-		   }
-		   else
-		   {
-			   jLabel.setText("Error");			
-		   }		
-		}
-		catch (NumberFormatException ex)
 		{
-			jLabel.setText("Error");	
+			String input = jTextField.getText();
+			Integer tmpInteger = Integer.valueOf(input);
+			if (tmpInteger == (num1 * num2)) {
+				jLabel.setText("OK");
+			} else {
+				jLabel.setText("Error");
+			}
+		} catch (NumberFormatException ex) {
+			jLabel.setText("Error");
 		}		
 	}
 

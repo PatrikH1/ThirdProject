@@ -377,16 +377,16 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			int num2)
 	{
 		try
-		{		
-		   Integer tmpInteger = new Integer(jTextField.getText());
-		   boolean calcOk = true;
-		   
-		   if (operator == MultiLabelTextField.MULTI) {
-			   calcOk = (tmpInteger == (num1 * num2));
-		   }
-		   else if (operator == MultiLabelTextField.DIV) {
-			   calcOk = (tmpInteger == (num1 / num2));
-		   }
+		{
+			String input = jTextField.getText();
+			Integer tmpInteger = Integer.valueOf(input);
+			boolean calcOk = true;
+
+			if (operator == MultiLabelTextField.MULTI) {
+				calcOk = (tmpInteger == (num1 * num2));
+			} else if (operator == MultiLabelTextField.DIV) {
+				calcOk = (tmpInteger == (num1 / num2));
+			}
 		   		   
 		   if (calcOk )
 		   {

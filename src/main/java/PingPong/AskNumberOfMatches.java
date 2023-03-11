@@ -80,7 +80,8 @@ public class AskNumberOfMatches extends javax.swing.JFrame {
 				jButtonCalculate.setBounds(75, 102, 87, 21);
 				jButtonCalculate.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						int n = (new Integer(jTextFieldNumberOfPlayers.getText())).intValue();						
+						String input = jTextFieldNumberOfPlayers.getText();
+						int n = Integer.valueOf(input).intValue();
 						jTextFieldNumberOfMatches.setText(NumberOfPingPongMatches.calcNumberOfMatches(n) + "");
 					}
 				});

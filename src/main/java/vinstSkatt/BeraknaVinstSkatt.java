@@ -7,7 +7,7 @@ public class BeraknaVinstSkatt {
 
     private int pris = 2150000;
 
-    private int kapitaltillskott = 255590;
+    private int kapitaltillskott = 130735;
     private int inkopspris = 125000;
     private int maklararvode = 40000;
     private int balkonger = 60000;

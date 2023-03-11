@@ -15,7 +15,7 @@ public class BeraknaVinstSkattMain {
         System.out.println();
 
         // Förstår ej varför, men behövs för att kunna skriva ut åäö.
-        String input = "Kapitaltillskott (255 590): ";
+        String input = "Kapitaltillskott (130 735): ";
         Integer value = inputInformation(input);
         if (value != null) {
             beraknaVinstSkatt.setKapitaltillskott(value);

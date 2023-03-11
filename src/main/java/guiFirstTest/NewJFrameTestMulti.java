@@ -425,16 +425,15 @@ public class NewJFrameTestMulti extends javax.swing.JFrame {
 	private void printOKorError(JLabel jLabel, JTextField jTextField, int num)
 	{
 		try
-		{		
-		   Integer tmpInteger = new Integer(jTextField.getText());
-		   if (tmpInteger.intValue() == (num * multiTable))
-		   {
-			   jLabel.setText("OK");
-		   }
-		   else
-		   {
-			   jLabel.setText("Error");			
-		   }		
+		{
+			String input = jTextField.getText();
+			Integer tmpInteger = Integer.valueOf(input);
+
+			if (tmpInteger.intValue() == (num * multiTable)) {
+				jLabel.setText("OK");
+			} else {
+				jLabel.setText("Error");
+			}
 		}
 		catch (NumberFormatException ex)
 		{
