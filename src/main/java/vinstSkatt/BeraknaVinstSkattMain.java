@@ -51,9 +51,14 @@ public class BeraknaVinstSkattMain {
             beraknaVinstSkatt.setOverlotelseAvgift(value);
         }
 
-        value = inputInformation("Reparationsfond (80): ");
+        value = inputInformation("Reparationsfond vid försäljning (1): ");
         if (value != null) {
-            beraknaVinstSkatt.setReparationsfond(value);
+            beraknaVinstSkatt.setReparationsfondForsaljning(value);
+        }
+
+        value = inputInformation("Reparationsfond vid förvärvet (80): ");
+        if (value != null) {
+            beraknaVinstSkatt.setReparationsfondForvarvet(value);
         }
 
         System.out.println();
@@ -67,7 +72,8 @@ public class BeraknaVinstSkattMain {
         System.out.println("Annons på Hemnet: " + beraknaVinstSkatt.getAnnonsPaHemnet());
         System.out.println("Inköp persienner: " + beraknaVinstSkatt.getInkopPersienner());
         System.out.println("Överåtelseavgift: " + beraknaVinstSkatt.getOverlotelseAvgift());
-        System.out.println("Reparationsfond: " + beraknaVinstSkatt.getReparationsfond());
+        System.out.println("Reparationsfond vid försäljning: " + beraknaVinstSkatt.getReparationsfondForsaljning());
+        System.out.println("Reparationsfond vid förvärvet: " + beraknaVinstSkatt.getReparationsfondForvarvet());
 
         // För att använda space mellan tusental.
         DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();

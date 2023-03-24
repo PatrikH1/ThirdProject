@@ -14,7 +14,8 @@ public class BeraknaVinstSkatt {
     private int annonsPaHemnet = 2990;
     private int inkopPersienner = 5400;
     private int overlotelseAvgift = 1208;
-    private int reparationsfond = 80;
+    private int reparationsfondForsaljning = 1;
+    private int reparationsfondForvarvet = 80;
 
     public BeraknaVinstSkatt() {
     }
@@ -51,8 +52,12 @@ public class BeraknaVinstSkatt {
         return overlotelseAvgift;
     }
 
-    public int getReparationsfond() {
-        return reparationsfond;
+    public int getReparationsfondForsaljning() {
+        return reparationsfondForsaljning;
+    }
+
+    public int getReparationsfondForvarvet() {
+        return reparationsfondForvarvet;
     }
 
     public void setMaklararvode(int maklararvode) {
@@ -75,10 +80,6 @@ public class BeraknaVinstSkatt {
         this.overlotelseAvgift = overlotelseAvgift;
     }
 
-    public void setReparationsfond(int reparationsfond) {
-        this.reparationsfond = reparationsfond;
-    }
-
     public void setPris(int pris) {
         this.pris = pris;
     }
@@ -91,6 +92,14 @@ public class BeraknaVinstSkatt {
         this.inkopspris = inkopspris;
     }
 
+    public void setReparationsfondForsaljning(int reparationsfondForsaljning) {
+        this.reparationsfondForsaljning = reparationsfondForsaljning;
+    }
+
+    public void setReparationsfondForvarvet(int reparationsfondForvarvet) {
+        this.reparationsfondForvarvet = reparationsfondForvarvet;
+    }
+
     public int vinstEfterAvdrag() {
         return pris
                 - kapitaltillskott
@@ -100,7 +109,8 @@ public class BeraknaVinstSkatt {
                 - annonsPaHemnet
                 - inkopPersienner
                 - overlotelseAvgift
-                - reparationsfond;
+                - reparationsfondForsaljning
+                + reparationsfondForvarvet;
     }
 
     /*
