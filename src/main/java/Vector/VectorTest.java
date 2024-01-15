@@ -16,32 +16,36 @@ public class VectorTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Vector<InfoClass> vec = new Vector<>();
+		Vector<InfoClass> vector = new Vector<>();
 		ArrayList<InfoClass> array = new ArrayList<>();
 
 		// Init of vector
 		int max = 10;
 		int i;
 		for (i = 0; i < max; i++) {
-			vec.add(new InfoClass("Info " + i));
+			vector.add(new InfoClass("Info " + i));
 		}
 
-		for (i = 0; i < vec.size(); i++) {
-			array.add(vec.get(i));
-		}
+		array.addAll(vector);
+
+//		for (i = 0; i < vector.size(); i++) {
+//			array.add(vector.get(i));
+//		}
 
 		System.out.println("Info about Vector:");
-		Iterator<InfoClass> iter = vec.iterator();
-		while (iter.hasNext()) {
-			System.out.println(((InfoClass) iter.next()).getTextStr());
-		}
+		vector.stream().forEach(vec -> System.out.println(vec.getTextStr()));
+
+//		Iterator<InfoClass> iter = vector.iterator();
+//		while (iter.hasNext()) {
+//			System.out.println(((InfoClass) iter.next()).getTextStr());
+//		}
 
 		System.out.println("\nInfo about array:");
 		array.stream().forEach(arr -> System.out.println(arr.getTextStr()));
 
 		String strToFind = "Info 9";
 
-		InfoClass result = vec
+		InfoClass result = vector
 				.stream()
 				.filter(res -> res.getTextStr().equals(strToFind))
 				.findFirst()
