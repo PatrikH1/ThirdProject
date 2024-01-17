@@ -23,7 +23,7 @@ public class VectorTest {
 		int max = 10;
 		int i;
 		for (i = 0; i < max; i++) {
-			vector.add(new InfoClass("Info " + i));
+			vector.add(new InfoClass("Info " + i, i));
 		}
 
 		array.addAll(vector);
@@ -33,7 +33,7 @@ public class VectorTest {
 //		}
 
 		System.out.println("Info about Vector:");
-		vector.stream().forEach(vec -> System.out.println(vec.getTextStr()));
+		vector.stream().forEach(vec -> System.out.println(vec.getTextStr() + " : " + vec.getValue()));
 
 //		Iterator<InfoClass> iter = vector.iterator();
 //		while (iter.hasNext()) {
@@ -41,9 +41,9 @@ public class VectorTest {
 //		}
 
 		System.out.println("\nInfo about array:");
-		array.stream().forEach(arr -> System.out.println(arr.getTextStr()));
+		array.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
 
-		String strToFind = "Info 9";
+		String strToFind = "Info 10";
 
 		InfoClass result = vector
 				.stream()
@@ -75,12 +75,3 @@ public class VectorTest {
 	}
 }
 
-class InfoClass {
-	String textStr;
-	public InfoClass (String textStr) {
-		this.textStr = textStr;
-	}
-	public String getTextStr() {
-		return textStr;
-	}
-}
