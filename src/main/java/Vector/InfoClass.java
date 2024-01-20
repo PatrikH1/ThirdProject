@@ -1,5 +1,7 @@
 package Vector;
 
+import java.util.Objects;
+
 class InfoClass {
     private String textStr;
     private int value;
@@ -13,6 +15,17 @@ class InfoClass {
 
     public int getValue() {
         return value;
+    }
+
+    public boolean equalsDuplicateCheck(InfoClass other) {
+        if (this == other) {
+            return true;
+        } else if (other == null) {
+            return false;
+        } else {
+            return Objects.equals(this.getTextStr(), other.getTextStr()) &&
+                    Objects.equals(this.getValue(), other.getValue());
+        }
     }
 }
 
