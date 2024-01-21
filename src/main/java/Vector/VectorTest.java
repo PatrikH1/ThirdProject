@@ -14,8 +14,8 @@ public class VectorTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		runTestToFindAtLeastOneDuplicate();
-		// runVectorAndArrayTest();
+		// runTestToFindAtLeastOneDuplicate();
+		runVectorAndArrayTest();
 	}
 
 	/**
@@ -85,22 +85,17 @@ public class VectorTest {
 			vector.add(new InfoClass("Info " + i, i));
 		}
 
-//		for (i = 0; i < vector.size(); i++) {
-//			array.add(vector.get(i));
-//		}
+		for (i = 0; i < vector.size(); i++) {
+			array.add(vector.get(i));
+		}
 
 		System.out.println("Info about Vector:");
 		vector.stream().forEach(vec -> System.out.println(vec.getTextStr() + " : " + vec.getValue()));
 
-//		Iterator<InfoClass> iter = vector.iterator();
-//		while (iter.hasNext()) {
-//			System.out.println(((InfoClass) iter.next()).getTextStr());
-//		}
-
 		System.out.println("\nInfo about array:");
 		array.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
 
-		String strToFind = "Info 10";
+		String strToFind = "Info 7";
 
 		InfoClass result = vector
 				.stream()
