@@ -27,5 +27,28 @@ class InfoClass {
                     Objects.equals(this.getValue(), other.getValue());
         }
     }
+
+    public static class IdentityForInfoClass {
+        private String textStr;
+        private int value;
+
+        public IdentityForInfoClass(InfoClass info) {
+            this.textStr = info.getTextStr();
+            this.value = info.getValue();
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            IdentityForInfoClass that = (IdentityForInfoClass) o;
+            return value == that.value && textStr.equals(that.textStr);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(textStr, value);
+        }
+    }
 }
 
