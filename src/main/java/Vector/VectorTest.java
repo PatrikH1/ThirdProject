@@ -9,12 +9,19 @@ public class VectorTest {
 	}
 
 	/**
-	 *  Class for testing the use of Vector.
+	 *  Class for testing the use of Vector, arrays and to find copies in a list.
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		runTestToFindAtLeastOneDuplicate();
+		// runVectorAndArrayTest();
+	}
 
+	/**
+	 * Creates a list of the InfoClass and try to find duplicates in that list.
+	 */
+	private static void runTestToFindAtLeastOneDuplicate() {
 		ArrayList<InfoClass> arrayList = new ArrayList<>();
 		// Init of ArrayList
 		int max = 6;
@@ -25,19 +32,24 @@ public class VectorTest {
 		arrayList.add(new InfoClass("Info " + 2, 2));
 		arrayList.add(new InfoClass("Info " + 2, 2));
 		arrayList.add(new InfoClass("Info " + 3, 3));
-		infoList(arrayList);
-
-		// runVectorAndArrayTest();
-
+		findAtLeastOneDuplicate(arrayList);
 	}
 
-	private static void infoList(List<InfoClass> infoList) {
+	/**
+	 * Takes a list of InfoClass as inparameter and checks if there is at least one
+	 * duplicate in that list. If a duplicate is found it is print out, otherwise it is
+	 * print out that no duplicate is found.
+	 *
+	 * @param infoList
+	 */
+	private static void findAtLeastOneDuplicate(List<InfoClass> infoList) {
 		boolean found = false;
 		System.out.println("\nInfo about array:");
 		// infoList.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
 
 		Map<InfoClass, Integer> infoMap = new LinkedHashMap<>();
-		// Gå igenom listan och spara undan antalet saker i en Map -> saker som nyckel, antalet som värde
+		// Go throw the list and save duplicates in the Map, InfoClass as key and the number of
+		// copies as an Integer
 		infoList.forEach(info ->
 				infoMap.entrySet()
 						.stream()
@@ -46,21 +58,20 @@ public class VectorTest {
 						.ifPresentOrElse(entry -> entry.setValue(entry.getValue() + 1), () -> infoMap.put(info, 1))
 		);
 
-		// Om vi hittar en identifierad dubblett (mer än en förekomst) returneras true
+		// If we find at least one duplicate, print out that duplicate is found othervise that it is not found.
 		for (Map.Entry<InfoClass, Integer> entry : infoMap.entrySet()) {
 			if (entry.getValue() > 1) {
 				System.out.println("Duplicate found!" + " str: " + entry.getKey().getTextStr() +
 						", value: " + entry.getKey().getValue() +
 						", number: "  + entry.getValue());
 				found = true;
+				break;
 			}
 		}
 		if (!found) {
 			System.out.println("Duplicate not found!");
 		}
 	}
-
-
 
 	private static void runVectorAndArrayTest() {
 
