@@ -14,12 +14,60 @@ public class VectorTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// runTestToFindAtLeastOneDuplicate();
-		runVectorAndArrayTest();
+		//runTestToFindAtLeastOneDuplicate();
+		runTestToFindAllDuplicatesInList();
+		// runVectorAndArrayTest();
 	}
 
 	/**
-	 * Creates a list of the InfoClass and try to find duplicates in that list.
+	 * Creates a list of the InfoClass and try to find all duplicates in the list.
+	 */
+	private static void runTestToFindAllDuplicatesInList() {
+		ArrayList<InfoClass> arrayList = new ArrayList<>();
+		// Init of ArrayList
+		int max = 6;
+		int i;
+		for (i = 0; i < max; i++) {
+			arrayList.add(new InfoClass("Info " + i, i));
+		}
+		arrayList.add(new InfoClass("Info " + 2, 2));
+		arrayList.add(new InfoClass("Info " + 2, 2));
+		arrayList.add(new InfoClass("Info " + 3, 3));
+		findAllDuplicatesInList(arrayList);
+	}
+
+	/**
+	 * Takes a list of InfoClass as inparameter and find all duplicates.
+	 *
+	 * @param infoList
+	 */
+	private static void findAllDuplicatesInList(List<InfoClass> infoList) {
+
+		System.out.println("\nInfo about all in array:");
+
+		Map<InfoClass.IdentityForInfoClass, List<InfoClass>> infoMap = new HashMap<>();
+		List<InfoClass> infoDuplicateList = new ArrayList<>();
+		// Go throw the list and save duplicates.
+		for (InfoClass info : infoList) {
+			InfoClass.IdentityForInfoClass identities = new InfoClass.IdentityForInfoClass(info);
+			if (!infoMap.containsKey(identities)) {
+				infoMap.put(identities, new ArrayList());
+			}
+			infoMap.get(identities).add(info);
+		}
+
+		for (Map.Entry<InfoClass.IdentityForInfoClass, List<InfoClass>> entry : infoMap.entrySet()) {
+			if (entry.getValue().size() > 1) {
+				infoDuplicateList.addAll(entry.getValue());
+			}
+		}
+
+		infoDuplicateList.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
+
+	}
+
+	/**
+	 * Creates a list of the InfoClass and try to find at least one duplicate in the list.
 	 */
 	private static void runTestToFindAtLeastOneDuplicate() {
 		ArrayList<InfoClass> arrayList = new ArrayList<>();
