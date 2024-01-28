@@ -15,9 +15,44 @@ public class VectorTest {
 	 */
 	public static void main(String[] args) {
 		//runTestToFindAtLeastOneDuplicate();
-		runTestToFindAllDuplicatesInList();
+		// runTestToFindAllDuplicatesInList();
 		// runVectorAndArrayTest();
+		runFindValuesInInfoIntegerLong();
 	}
+
+	/**
+	 *  Just some tests of InfoIntegerLong.
+	 *
+	 */
+	private static void runFindValuesInInfoIntegerLong() {
+		ArrayList<InfoIntegerLong> arrayList = new ArrayList<>();
+
+		arrayList.add(new InfoIntegerLong(Integer.valueOf(2020), 100L));
+		arrayList.add(new InfoIntegerLong(Integer.valueOf(2021), 200L));
+		arrayList.add(new InfoIntegerLong(Integer.valueOf(2022), 300L));
+		arrayList.add(new InfoIntegerLong(Integer.valueOf(2023), 400L));
+		arrayList.add(new InfoIntegerLong(Integer.valueOf(2024), 500L));
+
+		System.out.println("Info about values:");
+		arrayList.stream().forEach(arr -> System.out.println(arr.getYear() + " : " + arr.getValue()));
+
+		Integer yearToFind = Integer.valueOf(2024);
+
+		InfoIntegerLong result = arrayList
+				.stream()
+				.filter(res -> res.getYear().equals(yearToFind))
+				.findFirst()
+				.orElse(null);
+
+		System.out.println();
+		if (result != null) {
+			System.out.println("(vec) Value found: " + result.getValue());
+		}
+		else {
+			System.out.println("(vec) Value not found!");
+		}
+	}
+
 
 	/**
 	 * Creates a list of the InfoClass and try to find all duplicates in the list.
