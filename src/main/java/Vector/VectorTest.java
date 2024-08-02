@@ -14,10 +14,10 @@ public class VectorTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//runTestToFindAtLeastOneDuplicate();
+		runTestToFindAtLeastOneDuplicate();
 		// runTestToFindAllDuplicatesInList();
 		// runVectorAndArrayTest();
-		runFindValuesInInfoIntegerLong();
+		//nrunFindValuesInInfoIntegerLong();
 	}
 
 	/**
@@ -31,6 +31,7 @@ public class VectorTest {
 		arrayList.add(new InfoIntegerLong(Integer.valueOf(2021), 200L));
 		arrayList.add(new InfoIntegerLong(Integer.valueOf(2022), 300L));
 		arrayList.add(new InfoIntegerLong(Integer.valueOf(2023), 400L));
+		arrayList.add(new InfoIntegerLong(Integer.valueOf(2024), 600L));
 		arrayList.add(new InfoIntegerLong(Integer.valueOf(2024), 500L));
 
 		System.out.println("Info about values:");
@@ -68,6 +69,10 @@ public class VectorTest {
 		arrayList.add(new InfoClass("Info " + 2, 2));
 		arrayList.add(new InfoClass("Info " + 2, 2));
 		arrayList.add(new InfoClass("Info " + 3, 3));
+
+		System.out.println("Write out all in arrayList");
+		arrayList.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
+
 		findAllDuplicatesInList(arrayList);
 	}
 
@@ -77,8 +82,6 @@ public class VectorTest {
 	 * @param infoList
 	 */
 	private static void findAllDuplicatesInList(List<InfoClass> infoList) {
-
-		System.out.println("\nInfo about all in array:");
 
 		Map<InfoClass.IdentityForInfoClass, List<InfoClass>> infoMap = new HashMap<>();
 		List<InfoClass> infoDuplicateList = new ArrayList<>();
@@ -96,6 +99,8 @@ public class VectorTest {
 				infoDuplicateList.addAll(entry.getValue());
 			}
 		}
+
+		System.out.println("\nInfo about all in duplicates in:");
 
 		infoDuplicateList.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
 
@@ -128,7 +133,7 @@ public class VectorTest {
 	private static void findAtLeastOneDuplicate(List<InfoClass> infoList) {
 		boolean found = false;
 		System.out.println("\nInfo about array:");
-		// infoList.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
+		infoList.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
 
 		Map<InfoClass, Integer> infoMap = new LinkedHashMap<>();
 		// Go throw the list and save duplicates in the Map, InfoClass as key and the number of
@@ -138,11 +143,13 @@ public class VectorTest {
 						.stream()
 						.filter(entry -> entry.getKey().equalsDuplicateCheck(info))
 						.findAny()
-						.ifPresentOrElse(entry -> entry.setValue(entry.getValue() + 1), () -> infoMap.put(info, 1))
+						.ifPresentOrElse(entry -> entry.setValue(entry.getValue() + 1),
+								() -> infoMap.put(info, 1))
 		);
 
 		// If we find at least one duplicate, print out that duplicate is found othervise that it is not found.
 		for (Map.Entry<InfoClass, Integer> entry : infoMap.entrySet()) {
+			System.out.println("Number of duplicates: " + entry.getValue());
 			if (entry.getValue() > 1) {
 				System.out.println("Duplicate found!" + " str: " + entry.getKey().getTextStr() +
 						", value: " + entry.getKey().getValue() +
