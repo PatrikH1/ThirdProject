@@ -14,10 +14,10 @@ public class VectorTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		runTestToFindAtLeastOneDuplicate();
-		// runTestToFindAllDuplicatesInList();
+		// runTestToFindAtLeastOneDuplicate();
+		runTestToFindAllDuplicatesInList();
 		// runVectorAndArrayTest();
-		//nrunFindValuesInInfoIntegerLong();
+		// runFindValuesInInfoIntegerLong();
 	}
 
 	/**
@@ -90,12 +90,20 @@ public class VectorTest {
 			InfoClass.IdentityForInfoClass identities = new InfoClass.IdentityForInfoClass(info);
 			if (!infoMap.containsKey(identities)) {
 				infoMap.put(identities, new ArrayList());
+				System.out.println("In if sats " + info.getTextStr() + ", " + info.getValue());
+			}
+			else {
+				System.out.println("Contains " + info.getTextStr() + ", " + info.getValue());
 			}
 			infoMap.get(identities).add(info);
 		}
 
 		for (Map.Entry<InfoClass.IdentityForInfoClass, List<InfoClass>> entry : infoMap.entrySet()) {
 			if (entry.getValue().size() > 1) {
+				for (InfoClass info : entry.getValue()) {
+					System.out.println("Duplicates " + info.getTextStr() + ", " + info.getValue());
+				}
+
 				infoDuplicateList.addAll(entry.getValue());
 			}
 		}
