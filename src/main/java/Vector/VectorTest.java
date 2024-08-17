@@ -71,7 +71,10 @@ public class VectorTest {
 		arrayList.add(new InfoClass("Info " + 3, 3));
 
 		System.out.println("Write out all in arrayList");
-		arrayList.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
+		// arrayList.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
+		for (InfoClass info : arrayList) {
+			System.out.println(info.getTextStr() + " : " + info.getValue());
+		}
 
 		findAllDuplicatesInList(arrayList);
 	}
@@ -95,7 +98,10 @@ public class VectorTest {
 			else {
 				System.out.println("Contains " + info.getTextStr() + ", " + info.getValue());
 			}
+
 			infoMap.get(identities).add(info);
+
+			System.out.println("Identites" + infoMap.get(identities));
 		}
 
 		for (Map.Entry<InfoClass.IdentityForInfoClass, List<InfoClass>> entry : infoMap.entrySet()) {
