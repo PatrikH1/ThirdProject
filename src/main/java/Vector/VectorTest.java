@@ -14,10 +14,10 @@ public class VectorTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		runTestToFindAtLeastOneDuplicate();
-		// runTestToFindAllDuplicatesInList();
+		// runTestToFindAtLeastOneDuplicate();
+		runTestToFindAllDuplicatesInList();
 		// runVectorAndArrayTest();
-		//nrunFindValuesInInfoIntegerLong();
+		// runFindValuesInInfoIntegerLong();
 	}
 
 	/**
@@ -71,7 +71,10 @@ public class VectorTest {
 		arrayList.add(new InfoClass("Info " + 3, 3));
 
 		System.out.println("Write out all in arrayList");
-		arrayList.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
+		// arrayList.stream().forEach(arr -> System.out.println(arr.getTextStr() + " : " + arr.getValue()));
+		for (InfoClass info : arrayList) {
+			System.out.println(info.getTextStr() + " : " + info.getValue());
+		}
 
 		findAllDuplicatesInList(arrayList);
 	}
@@ -90,12 +93,23 @@ public class VectorTest {
 			InfoClass.IdentityForInfoClass identities = new InfoClass.IdentityForInfoClass(info);
 			if (!infoMap.containsKey(identities)) {
 				infoMap.put(identities, new ArrayList());
+				System.out.println("In if sats " + info.getTextStr() + ", " + info.getValue());
 			}
+			else {
+				System.out.println("Contains " + info.getTextStr() + ", " + info.getValue());
+			}
+
 			infoMap.get(identities).add(info);
+
+			System.out.println("Identites" + infoMap.get(identities));
 		}
 
 		for (Map.Entry<InfoClass.IdentityForInfoClass, List<InfoClass>> entry : infoMap.entrySet()) {
 			if (entry.getValue().size() > 1) {
+				for (InfoClass info : entry.getValue()) {
+					System.out.println("Duplicates " + info.getTextStr() + ", " + info.getValue());
+				}
+
 				infoDuplicateList.addAll(entry.getValue());
 			}
 		}
