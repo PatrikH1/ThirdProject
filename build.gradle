@@ -21,13 +21,15 @@ test {
     useJUnit()
 }
 
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
-gradle
 application {
     // Define the main class for the application.
     // mainClassName = 'HelloWorld.Class1'
-    mainClassName = 'vinstSkatt.BeraknaVinstSkattMain'
+    // mainClassName = 'vinstSkatt.BeraknaVinstSkattMain'
     // mainClassName = 'guiFirstTest.NewJFrameTestMultiRandom'
+    mainClassName = 'modernCalc.ModernCalcApp'
     // mainClassName = 'PingPong.AskNumberOfMatches'
     // mainClass.set("HelloWorld.Class1")
 }
