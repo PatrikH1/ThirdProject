@@ -4,26 +4,33 @@ import java.util.Scanner;
 
 public class CalcSalary {
     public static void main(String[] args) {
+
         // Skapa ett Scanner-objekt för att läsa inmatning
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Skriv in tre heltal:");
+        System.out.print("Vad du får in inklusive moms: ");
+        int lon = input.nextInt();
+        System.out.print("Vilken skattesats har du i procent: ");
+        int skattesats = input.nextInt();
 
-        // Läs in de tre heltalen
-        System.out.print("Tal 1: ");
-        int tal1 = input.nextInt();
+        double moms = lon * 0.2;
+        double bruttolon = lon - moms;
+        double arbetsgivaravgift = bruttolon * 0.3142;
 
-        System.out.print("Tal 2: ");
-        int tal2 = input.nextInt();
+        // Skriv ut skatt.
+        System.out.println();
+        System.out.println("Moms: " + moms);
+        System.out.println("Bruttolon: " + bruttolon);
+        String formateradArbetsgivaravgift = String.format("%.2f", arbetsgivaravgift);
+        System.out.println("Arbetsgivaravgift: " + formateradArbetsgivaravgift);
+        double skattSomBetalas = (bruttolon * ((double) skattesats / 100));
 
-        System.out.print("Tal 3: ");
-        int tal3 = input.nextInt();
+        System.out.println("Skatt: " + skattSomBetalas);
+        double utbetaldLon = (double) lon - moms - skattSomBetalas - arbetsgivaravgift;
 
-        // Räkna ut summan
-        int summa = tal1 + tal2 + tal3;
-
-        // Skriv ut resultatet
-        System.out.println("Summan av de tre talen är: " + summa);
+        System.out.println();
+        System.out.println("Utbetald lön: " + utbetaldLon);
+        System.out.println("Procentuell del som lön: " + ((utbetaldLon / (double) lon)) * 100);
 
         // Stäng scanner-objektet
         input.close();
