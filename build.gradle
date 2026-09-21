@@ -26,10 +26,11 @@ compileTestJava.options.encoding = 'UTF-8'
 
 application {
     // Define the main class for the application.
-    // mainClassName = 'HelloWorld.Class1'
+    mainClassName = 'HelloWorld.HelloWorld1'
     // mainClassName = 'vinstSkatt.BeraknaVinstSkattMain'
     // mainClassName = 'guiFirstTest.NewJFrameTestMultiRandom'
-    mainClassName = 'modernCalc.ModernCalcApp'
+    // mainClassName = 'modernCalc.ModernCalcApp'
+    // mainClassName = 'calcSalary.CalcSalary'
     // mainClassName = 'PingPong.AskNumberOfMatches'
     // mainClass.set("HelloWorld.Class1")
 }
