@@ -33,6 +33,8 @@ public class CalcSalary {
         System.out.println("Utbetald lön: " + String.format("%.2f", utbetaldLon));
         System.out.println("Procentuell del som lön: " + String.format("%.2f", ((utbetaldLon / (double) lon)) * 100)
                 + "%");
+        System.out.println("Procentuell del som lön (utan moms): " + String.format("%.2f",
+                ((utbetaldLon / bruttolon)) * 100) + "%");
 
         // Stäng scanner-objektet
         input.close();
