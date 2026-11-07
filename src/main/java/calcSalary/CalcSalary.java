@@ -8,33 +8,48 @@ public class CalcSalary {
         // Skapa ett Scanner-objekt för att läsa inmatning
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Vad du får in inklusive moms: ");
-        int lon = input.nextInt();
+        System.out.println();
+        System.out.println("----------------------------------------");
+        System.out.println();
+
+        System.out.print("Vad vill du ha i bruttolön: ");
+        int bruttolon = input.nextInt();
         System.out.print("Vilken skattesats har du i procent: ");
-        int skattesats = input.nextInt();
+        double skattesats = input.nextDouble();
 
-        double moms = lon * 0.2;
-        double bruttolon = lon - moms;
         double arbetsgivaravgift = bruttolon * 0.3142;
+        double moms = (arbetsgivaravgift + bruttolon) * 0.25;
 
-        // Skriv ut skatt.
         System.out.println();
         System.out.println("Moms: " + String.format("%.2f", moms));
-        System.out.println("Bruttolon: " + String.format("%.2f", bruttolon));
+//
+        System.out.println("Bruttolon: " + String.format("%.2f", (double) bruttolon));
         String formateradArbetsgivaravgift = String.format("%.2f", arbetsgivaravgift);
         System.out.println("Arbetsgivaravgift: " + formateradArbetsgivaravgift);
-        double skattSomBetalas = (bruttolon * ((double) skattesats / 100));
+        double skattSomBetalas = (bruttolon * (skattesats / 100));
 
-        // System.out.println("Skatt: " + skattSomBetalas);
-        System.out.println("Skatt: " + String.format("%.2f", (bruttolon * ((double) skattesats / 100))));
-        double utbetaldLon = (double) lon - moms - skattSomBetalas - arbetsgivaravgift;
+        System.out.println("Skatt: " + skattSomBetalas);
+
+        double nettolon = bruttolon - skattSomBetalas;
 
         System.out.println();
-        System.out.println("Utbetald lön: " + String.format("%.2f", utbetaldLon));
-        System.out.println("Procentuell del som lön: " + String.format("%.2f", ((utbetaldLon / (double) lon)) * 100)
-                + "%");
-        System.out.println("Procentuell del som lön (utan moms): " + String.format("%.2f",
-                ((utbetaldLon / bruttolon)) * 100) + "%");
+        System.out.println("nettolon: " + String.format("%.2f", nettolon));
+
+
+        System.out.println("Procentuell del som lön: " + String.format("%.2f", ((nettolon /
+                (bruttolon + arbetsgivaravgift + moms))) * 100) + "%");
+        System.out.println("Procentuell del som lön (utan moms): " + String.format("%.2f", ((nettolon /
+                (bruttolon + arbetsgivaravgift))) * 100) + "%");
+
+        System.out.println();
+
+        System.out.println("Bruttolon och arbetsgivaravgift: " + String.format("%.2f", bruttolon + arbetsgivaravgift));
+        System.out.println("Bruttolon, arbetsgivaravgift och moms: " + String.format("%.2f",
+                bruttolon + arbetsgivaravgift + moms));
+
+        System.out.println();
+        System.out.println("----------------------------------------");
+        System.out.println();
 
         // Stäng scanner-objektet
         input.close();
