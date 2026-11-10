@@ -1,5 +1,6 @@
 package calcSalary;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CalcSalary {
@@ -12,10 +13,45 @@ public class CalcSalary {
         System.out.println("----------------------------------------");
         System.out.println();
 
-        System.out.print("Vad vill du ha i bruttolön: ");
-        int bruttolon = input.nextInt();
-        System.out.print("Vilken skattesats har du i procent: ");
-        double skattesats = input.nextDouble();
+//        System.out.print("Vad vill du ha i bruttolön: ");
+//        int bruttolon = input.nextInt();
+
+        boolean ogiltigInmatning = true;
+        int bruttolon = 0;
+
+        while (ogiltigInmatning) {
+            try {
+                System.out.print("Vad vill du ha i bruttolön: ");
+                bruttolon = input.nextInt();
+
+                // Om inmatningen är ett giltigt heltal, bryter vi loopen
+                ogiltigInmatning = false;
+
+            } catch (InputMismatchException e) {
+                System.out.println("Felaktig inmatning! Ange lönen som ett heltal (utan punkter, komman eller bokstäver).");
+                input.nextLine(); // Rensar det felaktiga värdet ur scannerns minne
+            }
+        }
+
+        double skattesats = 0;
+        ogiltigInmatning = true;
+
+        while (ogiltigInmatning) {
+            try {
+                System.out.print("Vilken skattesats har du i procent: ");
+                skattesats = input.nextDouble();
+
+                // Om vi når hit var inmatningen korrekt, och vi kan avsluta loopen
+                ogiltigInmatning = false;
+
+            } catch (InputMismatchException e) {
+                System.out.println("Felaktig inmatning! Ange skattesatsen med siffror (och eventuell punkt/komma beroende på system).");
+                input.nextLine(); // VIKTIGT: Rensar bort det felaktiga värdet ur Scannerns minne
+            }
+        }
+
+//        System.out.print("Vilken skattesats har du i procent: ");
+//        double skattesats = input.nextDouble();
 
         double arbetsgivaravgift = bruttolon * 0.3142;
         double moms = (arbetsgivaravgift + bruttolon) * 0.25;
@@ -28,7 +64,7 @@ public class CalcSalary {
         System.out.println("Arbetsgivaravgift: " + formateradArbetsgivaravgift);
         double skattSomBetalas = (bruttolon * (skattesats / 100));
 
-        System.out.println("Skatt: " + skattSomBetalas);
+        System.out.println("Skatt: " + String.format("%.2f", skattSomBetalas));
 
         double nettolon = bruttolon - skattSomBetalas;
 
